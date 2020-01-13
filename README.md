@@ -29,6 +29,6 @@ after the installation process is done follow these steps:
 
 7- `cd functionrust`
 
-8- Change the docker image to contain a proper name && port to 3321
+8- Change the docker image to contain a proper name && then change the port to port to 3321
 
 9- `faas-cli up -f oxidize.yml`
