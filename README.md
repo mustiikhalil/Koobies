@@ -24,6 +24,7 @@ after the installation process is done follow these steps:
 
 3- `docker login`
 
+4- `kubectl port-forward -n openfaas svc/gateway 31112:8080 &`
 
 5- 
 ```
