@@ -6,9 +6,11 @@ add `export OPENFAAS_URL="http://127.0.0.1:31112"` to your `bash file`
 
 The following Tutorial was prepared using macos:
 
-1- `docker`
+1- GOLANG + make sure you run this in the `$GOPATH/src`
 
-  1.1 - open `docker app` and allow `Kubernetes`
+2- `docker`
+
+  2.1 - open `docker app` and allow `Kubernetes`
 
 # installation:
 
@@ -38,10 +40,14 @@ helm template faas-netes/chart/openfaas \
 6- `kubectl apply -f faas-netes/namespaces.yml && kubectl apply -f openfaas.yaml`
 
 
-7- `cd functionrust`
+7- `cd firstfunction`
 
 
 8- Change the docker image to contain a proper name && then change the port to port to 3321
 
 
-9- `faas-cli up -f oxidize.yml`
+9- `faas-cli up -f firstfunction.yml`
+
+10- install `go get -u github.com/golang/dep/cmd/dep`
+
+11- manage dependencies by `cd firstfunction && dep init && dep ensure` 

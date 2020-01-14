@@ -33,5 +33,4 @@ export HELM_HOST=127.0.0.1
 kubectl -n openfaas get deployments -l "release=openfaas, app=openfaas"
 kubectl rollout status -n openfaas deploy/gateway
 
-mkdir functionrust && cd functionrust
-faas-cli template pull https://github.com/jonstodle/openfaas-rust-template && faas-cli new oxidize --lang rust
+faas template pull https://github.com/openfaas-incubator/golang-http-template && faas new --lang golang-middleware firstfunction
