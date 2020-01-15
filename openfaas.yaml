@@ -7,7 +7,7 @@ apiVersion: v1
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: alertmanager-config
     heritage: Tiller
     release: release-name
@@ -52,7 +52,7 @@ apiVersion: v1
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: prometheus-config
     heritage: Tiller
     release: release-name
@@ -131,7 +131,7 @@ kind: ServiceAccount
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: faas-controller
     heritage: Tiller
     release: release-name
@@ -143,7 +143,7 @@ kind: Role
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: faas-controller
     heritage: Tiller
     release: release-name
@@ -202,7 +202,7 @@ kind: RoleBinding
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: faas-controller
     heritage: Tiller
     release: release-name
@@ -228,7 +228,7 @@ metadata:
   namespace: "openfaas"
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: prometheus
     heritage: Tiller
     release: release-name
@@ -240,7 +240,7 @@ metadata:
   namespace: "openfaas"
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: prometheus
     heritage: Tiller
     release: release-name
@@ -259,7 +259,7 @@ metadata:
   namespace: "openfaas"
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: prometheus
     heritage: Tiller
     release: release-name
@@ -280,7 +280,7 @@ kind: Service
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: alertmanager
     heritage: Tiller
     release: release-name
@@ -302,7 +302,7 @@ kind: Service
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: basic-auth-plugin
     heritage: Tiller
     release: release-name
@@ -326,7 +326,7 @@ kind: Service
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: gateway
     heritage: Tiller
     release: release-name
@@ -350,7 +350,7 @@ kind: Service
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: gateway
     heritage: Tiller
     release: release-name
@@ -375,7 +375,7 @@ kind: Service
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: nats
     heritage: Tiller
     release: release-name
@@ -399,7 +399,7 @@ kind: Service
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: prometheus
     heritage: Tiller
     release: release-name
@@ -421,7 +421,7 @@ kind: Deployment
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: alertmanager
     heritage: Tiller
     release: release-name
@@ -438,7 +438,7 @@ spec:
         app: alertmanager
       annotations:
         sidecar.istio.io/inject: "true"
-        checksum/alertmanager-config: "02990dce816099de8bb6e867b56507cd9d2a2184781805780d8d1f1eeef2e89b"
+        checksum/alertmanager-config: "5726bc480fb00532123a9d77dfda3d3c096c15ea34630d2005a89b3853b37f3d"
     spec:
       containers:
       - name: alertmanager
@@ -499,7 +499,7 @@ kind: Deployment
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: basic-auth-plugin
     heritage: Tiller
     release: release-name
@@ -571,7 +571,7 @@ metadata:
   namespace: "openfaas"
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: faas-idler
     heritage: Tiller
     release: release-name
@@ -603,9 +603,9 @@ spec:
             - name: prometheus_port
               value: "9090"
             - name: inactivity_duration
-              value: 15m
+              value: 30m
             - name: reconcile_interval
-              value: 1m
+              value: 2m
           command:
             - /home/app/faas-idler
             - -dry-run=true
@@ -628,7 +628,7 @@ kind: Deployment
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: gateway
     heritage: Tiller
     release: release-name
@@ -775,7 +775,7 @@ kind: Deployment
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: nats
     heritage: Tiller
     release: release-name
@@ -824,7 +824,7 @@ kind: Deployment
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: prometheus
     heritage: Tiller
     release: release-name
@@ -841,7 +841,7 @@ spec:
         app: prometheus
       annotations:
         sidecar.istio.io/inject: "true"
-        checksum/prometheus-config: "7b38f509bc2fc173abc77f21b22f9aa8dd35e549b594f2ca777aa9d53dea3717"
+        checksum/prometheus-config: "965d6559aca047aaa212690460c85d93f4327a19fbe76e6a137e929f10637396"
     spec:
       serviceAccountName: release-name-prometheus
       containers:
@@ -902,7 +902,7 @@ kind: Deployment
 metadata:
   labels:
     app: openfaas
-    chart: openfaas-5.4.0
+    chart: openfaas-5.4.1
     component: queue-worker
     heritage: Tiller
     release: release-name
@@ -980,6 +980,14 @@ spec:
 
 ---
 # Source: openfaas/templates/istio-mtls.yaml
+
+---
+# Source: openfaas/templates/oauth2-plugin-dep.yaml
+
+
+---
+# Source: openfaas/templates/oauth2-plugin-svc.yaml
+
 
 ---
 # Source: openfaas/templates/operator-rbac.yaml

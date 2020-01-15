@@ -1,6 +1,6 @@
 
 
-add `export OPENFAAS_URL="http://127.0.0.1:31112"` to your `bash file`
+add `export OPENFAAS_URL="http://127.0.0.1:31112"` to your `bash/zsh file`
 
 # Required software:
 
@@ -10,25 +10,27 @@ The following Tutorial was prepared using macos:
 
 2- `docker`
 
-  2.1 - open `docker app` and allow `Kubernetes`
+3- install miniKube
 
 # installation:
+
+run `install-koobies.sh`
+
+- minikube start
 
 run `install.sh`
 
 after the installation process is done follow these steps:
 
-1- `PASSWORD=$(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode)`
+- `kubectl port-forward -n openfaas svc/gateway 31112:8080 &`
 
+- `PASSWORD=$(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode)`
 
-2- `echo -n $PASSWORD | faas-cli login -g http://127.0.0.1:31112 -u admin --password-stdin`
+- `echo -n $PASSWORD | faas-cli login -g http://127.0.0.1:31112 -u admin --password-stdin`
 
+- `docker login`
 
-3- `docker login`
-
-4- `kubectl port-forward -n openfaas svc/gateway 31112:8080 &`
-
-5- 
+- 
 ```
 helm template faas-netes/chart/openfaas \
     --namespace openfaas  \
@@ -36,18 +38,16 @@ helm template faas-netes/chart/openfaas \
     --set functionNamespace=openfaas-fn > openfaas.yaml
 ```
 
+- `kubectl apply -f faas-netes/namespaces.yml && kubectl apply -f openfaas.yaml`
 
-6- `kubectl apply -f faas-netes/namespaces.yml && kubectl apply -f openfaas.yaml`
+- `cd firstfunction`
 
+- Change the docker image to contain a proper name 
+   - if there is a port error then change the port to port to 31112 and check if you already have the OPENFAAS_URL set
+   - or rerun the command `kubectl port-forward -n openfaas svc/gateway 31112:8080 &`
 
-7- `cd firstfunction`
+- `faas-cli up -f firstfunction.yml`
 
+- install `go get -u github.com/golang/dep/cmd/dep`
 
-8- Change the docker image to contain a proper name && then change the port to port to 3321
-
-
-9- `faas-cli up -f firstfunction.yml`
-
-10- install `go get -u github.com/golang/dep/cmd/dep`
-
-11- manage dependencies by `cd firstfunction && dep init && dep ensure` 
+- manage dependencies by `cd firstfunction && dep init && dep ensure` 

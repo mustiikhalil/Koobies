@@ -1,11 +1,3 @@
-curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/darwin/amd64/kubectl"
-
-chmod +x ./kubectl
-
-sudo mv ./kubectl /usr/local/bin/kubectl
-
-kubectl version
-
 curl -sLSf https://cli.openfaas.com | sudo sh
 
 curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
@@ -33,4 +25,7 @@ export HELM_HOST=127.0.0.1
 kubectl -n openfaas get deployments -l "release=openfaas, app=openfaas"
 kubectl rollout status -n openfaas deploy/gateway
 
+mkdir firstfunction
+cd firstfunction
 faas template pull https://github.com/openfaas-incubator/golang-http-template && faas new --lang golang-middleware firstfunction
+cd ..
