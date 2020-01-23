@@ -14,6 +14,8 @@ The following Tutorial was prepared using macos:
 
 # installation:
 
+- `docker login`
+
 run `install-koobies.sh`
 
 - minikube start
@@ -27,8 +29,6 @@ after the installation process is done follow these steps:
 - `PASSWORD=$(kubectl -n openfaas get secret basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode)`
 
 - `echo -n $PASSWORD | faas-cli login -g http://127.0.0.1:31112 -u admin --password-stdin`
-
-- `docker login`
 
 - 
 ```
